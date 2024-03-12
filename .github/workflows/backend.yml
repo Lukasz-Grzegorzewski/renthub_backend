@@ -4,7 +4,6 @@ on:
   push:
     branches:
       - 'main'
-
 jobs:
   docker:
     runs-on: ubuntu-latest
@@ -24,5 +23,7 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           context: .
+          target: prod
+          platforms: linux/amd64,linux/arm64
           push: true
           tags: lukaszgrzegorzewski/renthub_backend-ci:v0.0.0
